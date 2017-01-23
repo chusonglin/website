@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<style>
+</style>
+
+<body>
+    <div id="music-control" onclick="playPause()" class="music-control">
+        <img class="music-rotate" src="images/01.jpg">
+        <i class="iconfont icon-start"></i>
+        <audio id="music" controls loop autoplay>
+            <source src="audio/IDO.mp3" type="audio/mp3" />
+        </audio>
+    </div>
+
+	<div class="container">
+		<div class="head-img">
+	    	<img src="images/01.jpg">
+	    </div>
+	</div>
+
+</body>
+</html>
+<script>
+    function playPause(){
+        var music = document.getElementById('music')
+        if(music.paused){
+            music.play();
+            $('#music-control i').removeClass('icon-stop');
+            $('#music-control img').addClass('music-rotate')
+        }else{
+            music.pause();
+            $('#music-control i').addClass('icon-stop')
+            $('#music-control img').removeClass('music-rotate')
+        }
+    }
+</script>
+
