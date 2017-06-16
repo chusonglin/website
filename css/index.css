@@ -1,10 +1,19 @@
 /*headImg-rotate--start*/
+.container {
+	width: 100%;
+	height: 100%;
+}
+.canvas {
+	z-index: 3;
+	position: absolute;
+}
 .head-img {
 	position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: 5;
     width: 200px;
     height: 200px;
     margin: auto;
@@ -12,6 +21,7 @@
     color: #69ca62;
     box-shadow: inset 0 0 0 1px rgba(105, 202, 98, .5);
     border-radius: 20px;
+    transition:all 2s;
 }
 .head-img img { border-radius: 20px;}
 .head-img::after,
@@ -48,14 +58,20 @@
     }
 }
 /*headImg-rotate--end*/
+
+/*music-control--start*/ 
 .music-control {
 	position: fixed;
-	right: 10px;
-	top: 10px;
-	width: 30px;
-	height: 30px;
+	right: 30px;
+	bottom: 30px;
+	width: 40px;
+	height: 40px;
 	overflow: hidden;
+	border-radius: 50%;
+	z-index: 30;
+	padding: 5px;
 }
+.music-control {animation: musicbtn 2s linear infinite;}
 .music-control i {
 	position: absolute;
 	left: 50%;
@@ -63,21 +79,21 @@
 	z-index: 10;
 	transform:translate(-50%,-50%);
 	color: #fff;
-	font-size: 30px;
+	font-size: 75px;
 	cursor: pointer;
-	opacity: .3;
+	opacity: 0;
 	transition:all 1s;
 }
 .music-control i:hover {
-	opacity: 1;
+	opacity: .6;
 }
 .music-control img{
 	display: block;
-	width: 30px;
-	height: 30px;
+	width: 100%;
+	height: 100%;
 	border-radius: 50%;
 }
-.music-control audio{display: none;}
+.music-control audio,.music-control video{display: none;}
 .music-rotate {animation: music 5s linear infinite;}
 @keyframes music {
     0% {
@@ -86,4 +102,114 @@
     100% {
         transform: rotate(360deg);
     }
+}
+@keyframes musicbtn {
+    0% {
+		box-shadow: 0 0 0 #69ca62;
+    }
+    50% {
+        box-shadow: 0 0 20px #69ca62;
+    }
+    100% {
+        box-shadow: 0 0 0px #69ca62;
+    }
+}
+/*music-control--end*/ 
+
+/*piano-css-start*/
+.pianoWrap {
+	position: fixed;
+	left: 50%;
+	top: -150px;
+	z-index: 1;
+	margin-left: -600px;
+	width: 1200px;
+	transition:all 1s;
+}
+.pianoWrap li {
+	float: left;
+	width: 37.5px;
+	height: 150px;
+	border: 1px solid #e8e8e8; 
+	background-color: #fff;
+	position: relative;
+	border-radius: 0 0 4px 4px;
+	box-sizing: border-box;
+}
+.pianoWrap li::before {
+	content: "";
+	display: block;
+	width: 26px;
+	height: 80px;
+	background-color: #666;
+	background: linear-gradient(#555,#999);
+	position: absolute;
+	left: -13px;
+	top: 0;
+	border-radius: 0 0 4px 4px;
+}
+.pianoWrap li:nth-child(1)::before,
+.pianoWrap li:nth-child(3)::before,
+.pianoWrap li:nth-child(6)::before,
+.pianoWrap li:nth-child(10)::before,
+.pianoWrap li:nth-child(13)::before,
+.pianoWrap li:nth-child(17)::before,
+.pianoWrap li:nth-child(20)::before,
+.pianoWrap li:nth-child(24)::before,
+.pianoWrap li:nth-child(27)::before,
+.pianoWrap li:nth-child(31)::before,
+.pianoWrap li:nth-child(34)::before,
+.pianoWrap li:nth-child(38)::before,
+.pianoWrap li:nth-child(41)::before,
+.pianoWrap li:nth-child(45)::before,
+.pianoWrap li:nth-child(48)::before,
+.pianoWrap li:nth-child(52)::before
+{
+	display: none;
+}
+
+.pianoWrap li.down {background: linear-gradient(#fff,#eee);}
+/*piano-css-end*/
+
+
+.bg-img {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	z-index: 2;
+	opacity: .1;
+}
+.bg-img li {
+	width: 100%;
+	height: 100%;
+	background: url(../images/01.jpg) no-repeat center center;
+	background-size: 100% 100%;
+}
+
+@media screen and (max-width: 980px) {
+	.pianoWrap {
+		left: 0;
+		right: 0;
+		margin:0;
+		width: 100%;
+		display: flex; 
+	}
+	.pianoWrap li {
+		width: auto;
+		float: auto;
+		flex:1;
+	}
+    .music-control {
+        right: 20px;
+        bottom: 20px;
+        width: 80px;
+        height: 80px;
+        padding: 5px;
+    }
+    .music-control i {
+    	opacity: .6;
+    	font-size: 100px;
+    }    
 }

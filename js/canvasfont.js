@@ -25,14 +25,13 @@ var S = {
       S.UI.simulate(decodeURI(action).substring(i + 3));
     } else {
       // |#rectangle|#countdown 3||
-      S.UI.simulate('canvas|粒子动画效果|展示|3|2|1');
+      S.UI.simulate('#rectangle|你好|我是|楚松林|我有|一个故事|故事很长|很长很长|要用|一辈子时间|才能|把它讲完|现在|我想|讲给你听|#countdown 3|请客热线|13020005800|Remember to call me|');
     }
     S.Drawing.loop(function () {
       S.Shape.render();
     });
   }
 };
-
 
 S.Drawing = (function () {
   var canvas,
@@ -211,9 +210,9 @@ S.UI = (function () {
         default:
           S.Shape.switchShape(S.ShapeBuilder.letter(current[0] === cmd ? 'What?' : current));
       }
-    }, 2000, sequence.length);
+    }, 4000, sequence.length);
   }
-
+// 文字变换的时间==========================================
   function checkInputWidth(e) {
     if (input.value.length > 18) {
       ui.classList.add('ui--wide');
@@ -382,7 +381,7 @@ S.Dot = function (x, y) {
   this.e = 0.07;
   this.s = true;
   // 粒子的颜色更改
-  this.c = new S.Color(0, 0, 0, this.p.a);
+  this.c = new S.Color(185, 185, 185, this.p.a);
 
   this.t = this.clone();
   this.q = [];

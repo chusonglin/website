@@ -1,47 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>楚先生</title>
+    <meta name="viewport" content="user-scalable=no">
     <link rel="stylesheet" type="text/css" href="css/base.css">
     <link rel="stylesheet" type="text/css" href="css/iconfont.css">
     <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css" media="screen" type="text/css">
+    <link rel="shortcut icon" href="favicon.ico">
     <script src="js/jquery-1.11.2.min.js"></script>
     <script src="js/index.js"></script>
 </head>
-<style>
-</style>
-
 <body>
-    <div id="music-control" onclick="playPause()" class="music-control">
-        <img class="music-rotate" src="images/01.jpg">
-        <i class="iconfont icon-start"></i>
-        <audio id="music" controls loop autoplay>
-            <source src="audio/IDO.mp3" type="audio/mp3" />
-        </audio>
+    <div class="container">
+        <div id="music-control" onclick="playPause()" data-music="停止" class="music-control">
+            <img class="music-rotate" src="images/lin.jpg">
+            <i class="iconfont icon-start"></i>
+            <audio id="music" controls loop autoplay>
+                <source src="audio/The-Truth-That-You-Leave.mp3" type="audio/mp3" />
+            </audio>
+        </div>
+        <div class="head-img">
+            <img src="images/user.png">
+        </div>
+        <ul class="pianoWrap">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <ul class="bg-img">
+            <li>
+            </li>
+        </ul>
+        <div class="readme">
+            <canvas class="canvas" width="100%" height="100%"></canvas>
+            <div class="overlay" style="display: none">
+                <div class="help">?</div>
+                <div class="ui">
+                    <input class="ui-input" type="text">
+                </div>
+                <div class="tabs">
+                    <div class="tabs-labels"><span class="tabs-label tabs-label--active">Commands</span><span class="tabs-label">Info</span><span class="tabs-label">Share</span></div>
+                    <ul class="tabs-panel commands tabs-panel--active"></ul>
+                </div>
+            </div>
+            <script src="js/canvasfont.js"></script>
+        </div>
     </div>
-
-	<div class="container">
-		<div class="head-img">
-	    	<img src="images/01.jpg">
-	    </div>
-	</div>
-
 </body>
+
 </html>
 <script>
-    function playPause(){
-        var music = document.getElementById('music')
-        if(music.paused){
-            music.play();
-            $('#music-control i').removeClass('icon-stop');
-            $('#music-control img').addClass('music-rotate')
-        }else{
-            music.pause();
-            $('#music-control i').addClass('icon-stop')
-            $('#music-control img').removeClass('music-rotate')
-        }
+
+function playPause() {
+    var music = document.getElementById('music')
+    if (music.paused) {
+        $('#music-control').attr('data-music','停止');
+        $('#music-control i').removeClass('icon-stop');
+        $('#music-control img').addClass('music-rotate');
+        music.play();
+    } else {
+        $('#music-control').attr('data-music','启动');
+        $('#music-control i').addClass('icon-stop');
+        $('#music-control img').removeClass('music-rotate');
+        music.pause();
     }
+}
 </script>
 
